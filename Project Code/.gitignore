@@ -1,0 +1,11 @@
+# Ignore compilation files and dependencies
+target/
+*.class
+*.jar
+*.war
+
+# Ignore local environment configuration files
+.env
+
+# Ignore Docker files
+.dockerignore
