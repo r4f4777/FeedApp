@@ -1,0 +1,715 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif; /* Aplicar Montserrat a todo el cuerpo */
+    overflow-x: hidden; /* Evita el desplazamiento horizontal */
+    scroll-behavior: smooth;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    color: #333;
+    position: relative; /* Para colocar contenido sobre el fondo */
+    z-index: 1; /* Asegura que el contenido del header esté por encima del fondo */
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    max-width: 1200px;
+    margin: 0 auto; /* Centra el contenido del nav */
+}
+
+/* Estilos generales para el body y html */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%; /* Asegura que el body tenga una altura del 100% */
+    overflow-x: hidden; /* Evita el desplazamiento horizontal */
+}
+
+/* Estilo para las secciones de fondo */
+.background {
+    position: fixed; /* Mantener la imagen de fondo fija */
+    top: 0; /* Coloca en la parte superior */
+    left: 0; /* Coloca a la izquierda */
+    right: 0; /* Se extiende hasta el borde derecho */
+    background-size: contain; /* Mantiene la proporción de la imagen y evita que se corte */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-position: center; /* Centra la imagen */
+    z-index: -1; /* Envía la imagen al fondo */
+    width: 100%;
+    height: auto; /* Ajusta la altura automáticamente en función de la imagen */
+    z-index: -1;
+}
+
+
+.background img {
+    width: 100%; /* Asegura que la imagen ocupe el 100% del ancho del contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+    max-height: 100%; /* Limita la altura máxima */
+    object-fit: contain; /* Asegura que la imagen se mantenga dentro del contenedor sin cortarse */
+    margin: 0; /* Asegura que no haya márgenes */
+    padding: 0; /* Asegura que no haya padding */
+}
+
+.logo {
+    display: flex;                  
+    justify-content: space-between; 
+    align-items: center;            
+    padding: 10px;                  
+    /*background-color: #e81ab5;*/      
+    margin-left: 50px;              /* Ajustar para crear separación desde la izquierda */
+    margin-right: 50px;             /* Espacio opcional a la derecha */
+}
+
+.left-logo {
+    width: 50px;                    
+    height: auto;
+}
+
+.logo h3 {
+    margin-left: 10px;        /* Ajusta el margen derecho según sea necesario */
+    font-size: 24px;           /* Opcional: ajustar el tamaño de fuente */
+    color: #000;               /* Opcional: ajustar el color */
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    position:absolute;
+    margin-left: 340px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif; /* Aplicar Montserrat al menú */
+    position: relative; /* Necesario para el pseudoelemento ::after */
+    padding: 5px 0; /* Añadir padding para separar la barra inferior del texto */
+    transition: color 0.3s ease; /* Suaviza el cambio de color */
+}
+
+.menu a:hover {
+    color: #f5a623; /* Cambia el color del texto al pasar el ratón */
+}
+
+.menu a.active {
+    color: #f5a623; /* Color amarillo para el enlace activo */
+}
+
+/* Pseudoelemento para la barra inferior */
+.menu a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%; /* Ocupa todo el ancho del enlace */
+    height: 2px; /* Altura de la barra */
+    background-color: #f5a623; /* Color de la barra */
+    transform: scaleX(0); /* Inicialmente, la barra no es visible */
+    transition: transform 0.3s ease; /* Suaviza la animación */
+    transform-origin: left; /* La animación se despliega desde la izquierda */
+}
+
+.menu a:hover::after {
+    transform: scaleX(1); /* Hace visible la barra al pasar el ratón */
+}
+
+.menu a.active::after {
+    transform: scaleX(1); /* Hace visible la barra en el enlace activo */
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.auth-buttons a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px; /* Más padding para un efecto más grande */
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-transform: uppercase;
+}
+
+.auth-buttons a:hover {
+    transform: scale(1.05); /* Efecto de escala al hacer hover */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Sombra para darle profundidad */
+}
+
+/* Efecto de color gradual */
+.auth-buttons a::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2); /* Color para el efecto de deslizamiento */
+    transition: left 0.4s ease;
+    z-index: 0;
+}
+
+.auth-buttons a:hover::before {
+    left: 0; /* Mueve el overlay para crear el efecto de deslizamiento */
+}
+
+.auth-buttons a span {
+    position: relative;
+    z-index: 1; /* Coloca el texto encima del overlay */
+}
+
+.login {
+    background-color: #333;
+}
+
+.register {
+    background-color: #f5a623;
+}
+
+.profile {
+    background-color: #f5a623;
+}
+
+.header-content {
+    margin-top: 20px;
+    color: #333;
+    max-width: 510px;
+    /*background-color: #1a73e8;*/
+    margin-left: -580px;
+    text-align: left; /* Alineación a la izquierda */
+    display: flex;          /* Usar flexbox para el alineamiento */
+    flex-direction: column; /* Coloca los elementos en columna */
+    align-items: flex-start; /* Alinear elementos al inicio (izquierda) */
+}
+
+.bell-icon {
+    width: 600px;    /* Ajusta el tamaño a 40px de ancho */
+    height: auto;   /* Mantiene la proporción original */
+    margin-left: 167px; /* Espacio entre la imagen y el texto */
+    margin-bottom: -115px;
+    position: relative;        /* Permite el uso de z-index */
+    z-index: 1;  
+}
+
+h1 {
+    margin-top:55px; 
+    font-size: 6em;
+    font-weight: bold;
+    color: #333;
+    position: relative;        /* Añadido para que el z-index funcione */
+    z-index: 0;    
+}
+
+.subtitle {
+    font-size: 2.4em;
+    color: #666;
+    margin-top: 10px;
+    width: 100%;
+    text-align: right; /* Alineación a la izquierda */
+}
+
+.description {
+    font-size: 1.4em;
+    color: #666;
+    margin-top: 10px;
+    width: 100%;
+    text-align: justify; /* Texto justificado */
+}
+
+.message-icon {
+    width: 100px;    /* Ajusta el tamaño a 40px de ancho */
+    height: auto;   /* Mantiene la proporción original */
+    margin-left: 230px; /* Espacio entre la imagen y el texto */
+    margin-bottom: -100px;
+    margin-top: 20px;
+    position: relative;        /* Permite el uso de z-index */
+    z-index: 1;  
+}
+
+.start-voting {
+    background-color: #1a73e8;
+    color: white;
+    font-weight: bold;
+    font-size: 1.3em;
+    font-family: 'Montserrat', sans-serif;
+    padding: 17px 35px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 65px;
+    margin-left: 280px;
+    align-self: flex-end;
+}
+
+.start-voting:hover {
+    background-color: #0056b3;
+}
+
+.baners{
+margin-top: 50px;
+margin-bottom: 20px;
+width: 1100px;
+}
+
+.baners-up {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Alinea las imágenes al inicio para poder ajustar individualmente */
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.baners-up img {
+    width: 32%; /* Ajuste para el tamaño de cada imagen */
+    height: auto;
+    margin: 0 5px; /* Espacio uniforme entre las imágenes */
+}
+
+.baners-up img:nth-child(2), /* Selecciona la imagen del medio */
+.baners-up img:nth-child(3) { /* Selecciona la imagen de la derecha */
+    margin-top: 14px; /* Ajusta el margen superior para bajar estas imágenes */
+}
+
+.baners-down {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Alineación superior para ajustes individuales */
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.baners-down img {
+    width: 48%; /* Ajuste del tamaño de cada imagen para ocupar el 100% con espacio */
+    height: auto;
+    margin: 0 5px; /* Espacio uniforme entre las imágenes */
+}
+
+.baners-down img:nth-child(2) { /* Ajuste para bajar solo la imagen derecha si es necesario */
+    margin-top: 3px; /* Ajusta el margen superior para alinear con la primera imagen */
+}
+
+.start-creating-container {
+    position: relative; /* Necesario para el posicionamiento absoluto del botón */
+    width: 48%; /* Mantén el mismo ancho que las otras imágenes */
+    margin-right:6px; 
+}
+
+/* Imagen dentro del contenedor */
+.start-creating-container img {
+    width: 100%; /* Ajusta la imagen al ancho completo del contenedor */
+    height: auto;
+}
+
+/* Estilos del botón para centrarlo encima de la imagen */
+.start-creating {
+    position: absolute;
+    top: 69.6%;
+    left: 26.7%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(105, 197, 253);
+    color: white;
+    padding: 14px 21.3px;
+    border: none;
+    border-radius: 22px;
+    font-weight: bold;
+    font-size: 15px;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.start-creating:hover {
+    background-color: #0056b3;
+}
+
+.container {
+    position: relative; /* Mantener un contexto de posición para los elementos hijos */
+    margin: 0 auto;
+    width: 100%; /* O el ancho específico que desees */
+    overflow: hidden; /* Evita que el contenido se desborde del contenedor */
+    padding: 0; /* Espacio interno opcional */
+    width: 1100px;
+    height: auto;
+    background-color: #ffffff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Añade sombra al contenedor */
+}
+
+.decoracion {
+    width: 100%; /* Ajustar al ancho completo del contenedor */
+    text-align: center; /* Opcional: centrar la imagen dentro del div */
+}
+
+.decoracion img {
+    max-width: 100%; /* Asegura que la imagen no exceda el ancho del contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+    display: block; /* Elimina el espacio inferior que puede causar el comportamiento en línea */
+    margin: 0;
+}
+
+.black-bar {
+    display: flex;
+    background-color: rgb(82, 81, 81);
+    width: 100%;
+    height: 200px;
+    margin-top: -8px;
+}
+
+/* Especificamos esta clase solo para la imagen principal */
+.app-movil-img {
+    width: 400px;
+    height: 400px;
+    margin-left: 180px;
+    margin-top: -80px;
+}
+
+.text-container {
+    width: 400px; /* Ajuste de ancho para el texto */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-grow: 1;
+    text-align: right;
+    padding: 20px 60px;
+    overflow: hidden;
+}
+
+.text-align-right {
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.text-align-right p {
+    color: #ffffff;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5em;
+}
+
+.app-store-links {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.store-link {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 25px;
+    color: white;
+    width: 180px;
+    height: 50px;
+    padding: 5px 15px; /* Espacio ajustado */
+    box-sizing: border-box;
+    gap: 10px; /* Espacio entre el icono y el texto */
+}
+
+.store-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.store-text {
+    font-size: 14px;
+    color: rgb(30, 30, 30);
+    text-align: left;
+    white-space: nowrap;
+}
+
+/* Contenedor principal en flex para dividir en dos columnas */
+.main-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    /*background-color: #0056b3;*/
+    margin-top: 60px;
+    padding: 20px;
+    gap: 20px; /* Espacio entre redes sociales y estadísticas */
+}
+
+/* Redes Sociales */
+.social-section {
+    width: 60%;
+    text-align: center;
+    margin-top: 50px;
+    border-radius: 8px;
+    padding: 20px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.social-title {
+    font-size: 51.9px;
+    font-weight: bold;
+    font-family: 'Telegraf', sans-serif; /* Asegúrate de tener esta fuente o de importarla */
+    color: #e7e7e7;
+    margin-bottom: 20px;
+    text-shadow: 10px -10px 15px rgba(221, 221, 221, 0.4);
+}
+
+.social-posts img{
+    margin-top: -10px;
+    width: 100%;
+    height: auto;
+}
+
+/* Sección de Estadísticas */
+.statistics-section {
+    width: 40%;
+    height: 425px;
+    /*background-color: #f5a623;*/
+    text-align: center;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Título de Estadísticas */
+.statistics-title {
+    font-size: 51.9px;
+    font-weight: bold;
+    font-family: 'Telegraf', sans-serif; /* Asegúrate de tener esta fuente o de importarla */
+    color: #e7e7e7;
+    margin-bottom: 20px;
+    text-shadow: 10px -10px 15px rgba(221, 221, 221, 0.4);
+    margin-top: 30px;
+}
+
+
+/* Tarjeta Superior (Polls Created) */
+.statistics-top-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Distribuir icono y texto */
+    padding: 15px 20px;
+    background: linear-gradient(180deg, #235683, #94b9ff);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    margin-left: 224px; /* Alinear la tarjeta a la derecha */
+    width: 48%; /* Ajusta el ancho al contenedor principal */
+    height: 130px;
+    box-sizing: border-box; /* Asegura que el padding no aumente el ancho total */
+}
+
+.statistics-top-card img {
+    width: 90px;
+    height: 90px;
+    margin-top: -40px;
+    margin-left: -20px;
+}
+
+.statistics-text {
+    margin-top: 30px;
+    text-align: left;
+    flex: 1;
+}
+
+.statistics-number {
+    font-size: 40px;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 0;
+}
+
+.statistics-label {
+    font-size: 16px;
+    font-weight: 500;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin-left: 5px;
+}
+
+/* Tarjetas Inferiores (Votes y Users) */
+.statistics-bottom-cards {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Espacio entre tarjetas inferiores */
+    height: 130px;
+}
+
+.statistics-card {
+    flex: 1; /* Ajusta el ancho de cada tarjeta para que sean iguales */
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Distribuir icono y texto */
+    padding: 15px 20px;
+    background: linear-gradient(180deg, #235683, #94b9ff);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box; /* Asegura que el padding no aumente el ancho total */
+}
+
+.statistics-card img {
+    width: 90px;
+    height: 90px;
+    margin-top: -40px;
+}
+
+.yellow-bar {
+    display: flex;
+    background-color: #ffba00;
+    width: 100%;
+    height: 70px;
+    margin-top: -7px;
+    padding: 0 50px;
+    justify-content: space-between; /* Distribuye uniformemente los elementos */
+    align-items: center; /* Alinea los items verticalmente al centro */
+}
+
+.yellow-bar-item {
+    display: flex;
+    align-items: center; /* Alinea el icono y el texto verticalmente */
+    margin: 0 10px; /* Espacio entre los elementos */
+}
+
+.yellow-bar-icon {
+    width: 30px; /* Tamaño por defecto de los iconos */
+    height: auto; /* Mantiene la proporción */
+    margin-right: 5px; /* Espacio entre el icono y el texto */
+}
+
+/* Estilo específico para el logo de GAFF */
+.gaaf-logo {
+    width: 50px; /* Ajusta el tamaño del logo de GAFF */
+    height: auto; /* Mantiene la proporción */
+}
+
+/* Estilo específico para el nombre de la marca GAFF */
+.gaff-text {
+    font-weight: bold; /* Estilo en negrita para el nombre de la marca */
+    font-size: 30px; /* Ajusta el tamaño de la fuente */
+    margin-left: 10px;
+    color: rgb(28, 28, 28) 
+}
+
+/* Estilo para los textos de contacto */
+.contact-text {
+    white-space: nowrap; /* Asegura que el texto esté en una sola línea */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: rgb(28, 28, 28)
+}
+
+/* Alineación de los iconos de redes sociales hacia la derecha */
+.social-icons {
+    margin-left: 100px; /* Empuja los iconos de redes sociales hacia la derecha */
+    margin-right: 100px;
+}
+
+/* FOOTER */
+.footer {
+    background-color: rgb(82, 81, 81);
+    width: 100%;
+    height: 240px; /* Ajuste para que el footer sea más alto */
+    padding: 20px 0;
+    color: #e7e7e7;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    width: 90%;
+    max-width: 1200px;
+    color: #e7e7e7;
+}
+
+.about-us {
+    margin-top: 25px;
+}
+
+/* Estilo para agrupar COURSE y SITE MAP */
+.course-site-map {
+    display: flex;
+    flex-direction: column; /* Organiza en columna */
+    gap: 30px; /* Espacio entre COURSE y SITE MAP */
+    margin-left: -100px;
+    margin-top: 25px;
+}
+
+.footer-section h3 {
+    font-size: 1em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.footer-section p,
+.footer-section ul,
+.footer-section li {
+    font-size: 0.9em;
+    margin: 5px 0;
+    line-height: 1.6;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section li {
+    margin: 5px 0;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 15px;
+    font-size: 0.8em;
+    color: #e7e7e7;
+    margin-top: -50px;
+}
+
+.location-icon {
+    width: 12px;
+    height: auto;
+    margin-right: 2px;
+    margin-top: -2px;
+    vertical-align: middle;
+}
+
+.footer-image-container {
+    margin-top: -20px;
+    margin-right: -150px;
+    height: 280px;
+    width: auto;
+}
+
+.footer-bg-image {
+    height: 100%; /* Asegura que la imagen ocupe el alto del contenedor del footer */
+    opacity: 0.5; /* Ajusta la opacidad si quieres un efecto de transparencia */
+}
+
